@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Homeautomation</title>
+    <link rel='icon' type='image/png' href='favicon.png'>
+    <link rel='stylesheet' href='css/common.css'>
+</head>
+
+<body>
+<div id='dynamicSection'>
+    <header>
+        <img id='homeautomationIcon' src='img/homeautomation.svg' alt='Login Icon' title='Login Page Icon'>
+        <h1 id='mainTitle'>HOMEAUTOMATION</h1>
+    </header>
+
+    <div id='loginContent'>
+        <div id='loginTitleDiv'>
+            LOGIN
+        </div>
+        <div id='usernameDiv'>
+            <label id='usernameLabel' class='loginLabel' for='username'>USERNAME</label>
+            <input id='username' class='validatable loginInput' tpye='text' name='username' required minlength='4'>
+        </div>
+        <div id='passwordDiv'>
+            <label id='passwordLabel' class='loginLabel' for='password'>PASSWORD</label>
+            <input id='password' class='validatable loginInput' type='password' name='password' required minlength='4'>
+        </div>
+        <div id='loginButtonDiv'>
+            <button id='loginButton' type='button'>OK</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p class='logArea'></p>
+    <p class='copyright'>&copy; 2016 Homeautomation Team</p>
+</footer>
+
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js'></script>
+<script src='scripts/init.js'></script>
+</body>
+</html>

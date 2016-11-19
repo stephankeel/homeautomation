@@ -1,0 +1,19 @@
+{
+  "name": "Homeautomation",
+  "version": "1.0.0",
+  "description": "HSR Project 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "D.Leuenberger, St.Keel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "nedb": "^1.1.2",
+    "node": "0.0.0"
+  }
+}
