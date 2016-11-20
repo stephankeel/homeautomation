@@ -15,7 +15,7 @@
             e.stopPropagation();
             var invalids = $('.validatable:invalid');
             if (invalids.length == 0) {
-                log('login clicked: ' + $('#userName').val() + ", " + $('#password').val());
+                log('login clicked: ' + $('#username').val() + ", " + $('#password').val());
                 remoteService.loadMainPage();
             } else {
                 log('input not valid');
