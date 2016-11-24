@@ -86,6 +86,11 @@ footer {
     align-self: center;
 }
 
+#loginInfo {
+    margin: 0 0 0.5em 8em;
+    color: red;
+}
+
 #loginButtonDiv {
     flex: 2;
     background-color: yellow;

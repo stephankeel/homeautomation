@@ -9,11 +9,14 @@
   </div>
   <div id='usernameDiv'>
     <label id='usernameLabel' class='loginLabel' for='username'>USERNAME</label>
-    <input [(ngModel)]="user.username" placeholder="username" id='username' class='validatable loginInput' tpye='text' name='username' required minlength='4'>
+    <input [(ngModel)]="username" placeholder="username" id='username' class='validatable loginInput' tpye='text' name='username' required minlength='4'>
   </div>
   <div id='passwordDiv'>
     <label id='passwordLabel' class='loginLabel' for='password'>PASSWORD</label>
-    <input [(ngModel)]="user.password" placeholder="password" id='password' class='validatable loginInput' type='password' name='password' required minlength='4'>
+    <input [(ngModel)]="password" placeholder="password" id='password' class='validatable loginInput' type='password' name='password' required minlength='4'>
+  </div>
+  <div *ngIf='loginInfo' id='loginInfo'>
+    {{loginInfo}}
   </div>
   <div id='loginButtonDiv'>
     <button id='loginButton' (click)='doLogin()'>OK</button>

@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {Router}   from '@angular/router';
-import headersToString = http.headersToString;
 
 import {GenericService} from './generic.service';
 
@@ -16,15 +15,18 @@ export class LoginComponent {
     @Input()
     password: string;
 
+    loginInfo: string;
+
     constructor(private genericService: GenericService,
                 private router: Router) {
     }
 
     doLogin(): void {
         this.genericService.login(this.username, this.password).then(user => {
+            this.loginInfo = 'welcome';
             this.router.navigate(['/dashboard']);
         }).catch(error => {
-            log.error("login failure: " + (error.message || error));
+            this.loginInfo = 'login failure: ' + (error.message || error);
         });
     }
 
