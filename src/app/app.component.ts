@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {Router}   from '@angular/router';
 
+import {LoginComponent} from './login.component';
+
 import {GenericService} from './generic.service';
 
 @Component({
     selector: 'my-app',
     template: `
-        <h3>{{title}}</h3>
+        <router-outlet></router-outlet>
         <footer>
             <p class='logArea'>{{logInfo}}</p>
             <p class='copyright'>&copy; 2016 Homeautomation Team</p>
@@ -15,8 +17,6 @@ import {GenericService} from './generic.service';
 })
 
 export class AppComponent {
-    title = 'Starting...';
-
     logInfo: string;
 
     log(info: string): void {
