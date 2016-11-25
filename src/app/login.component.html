@@ -4,7 +4,7 @@
 </header>
 
 <div *ngIf='loggedOut===true' id='loginContent'>
-  <div id='loginTitleDiv'>
+  <div id='loginTitleDiv' class='loginPageTitleDiv'>
     LOGIN
   </div>
   <div id='usernameDiv'>
@@ -18,15 +18,15 @@
   <div *ngIf='loginInfo' id='loginInfo'>
     {{loginInfo}}
   </div>
-  <div id='loginButtonDiv'>
+  <div id='loginButtonDiv' class='loginPageButtonDiv'>
     <button id='loginButton' (click)='doLogin()'>OK</button>
   </div>
 </div>
 <div *ngIf='loggedOut===false' id='logoutContent'>
-  <div id='logoutTitleDiv'>
+  <div id='logoutTitleDiv' class='loginPageTitleDiv'>
     LOGOUT
   </div>
-  <div id='logoutButtonDiv'>
+  <div id='logoutButtonDiv' class='loginPageButtonDiv'>
     <button id='logoutButton' (click)='doLogout()'>OK</button>
   </div>
 </div>
