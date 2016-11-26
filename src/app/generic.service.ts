@@ -1,44 +1,62 @@
-import {Injectable} from '@angular/core';
+import {Injectable}      from '@angular/core';
+import {Headers, Http} from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import {User} from './user';
-import {USERS} from './mock-users';
+import {InMemoryDataService} from './in-memory-data.service';
 
 @Injectable()
 export class GenericService {
 
-    loggedInUser: User;
+  private usersUrl = 'app/users';
 
-    getUsers(): Promise<User[]> {
-        return Promise.resolve(USERS);
-    }
+  loggedInUser: User;
 
-    getUser(id: number): Promise<User> {
-        return this.getUsers()
-            .then(users => users.find(user => user.id === id));
-    }
+  constructor(private http: Http) {
+  }
 
-    private getLoginUser(username: string): User {
-        return USERS.find(user => user.username == username);
-    }
 
-    login(username: string, password: string): Promise<User> {
-        return new Promise<User>((resolve, reject) => {
-            let user: User = this.getLoginUser(username);
-            if (user && user.password === password) {
-                this.loggedInUser = user;
-                resolve(user);
-            } else {
-                reject(new Error(`Either username ${username} is unknown or password is invalid!`));
-            }
-        });
-    }
+  getUsers(): Promise<User[]> {
+    return this.http.get(this.usersUrl)
+      .toPromise()
+      .then(response => response.json().data as User[])
+      .catch(this.handleError);
+  }
 
-    logout(): void {
-        this.loggedInUser = null;
-    }
+  getUser(id: number): Promise<User> {
+    return this.getUsers()
+      .then(users => users.find(user => user.id === id));
+  }
 
-    loggedIn(): boolean {
-        return this.loggedInUser != null;
-    }
+  private getLoginUser(username: string): Promise<User> {
+    return this.getUsers()
+      .then(users => users.find(user => user.username === username));
+  }
+
+  login(username: string, password: string): Promise<User> {
+    return this.getLoginUser(username).then(user => {
+      if (user && user.password === password) {
+        this.loggedInUser = user;
+        return user;
+      } else {
+        throw new Error(`Either username ${username} is unknown or password is invalid!`);
+      }
+    });
+  }
+
+  logout(): void {
+    this.loggedInUser = null;
+  }
+
+  loggedIn(): boolean {
+    return this.loggedInUser != null;
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
 
 }
