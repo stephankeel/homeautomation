@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {Router}   from '@angular/router';
 
-import {LoginComponent} from './login.component';
-
 import {GenericService} from './generic.service';
 
 @Component({
