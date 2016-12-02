@@ -1,21 +1,19 @@
-import {Component, Input} from '@angular/core';
-import {Router}   from '@angular/router';
+import {Component} from '@angular/core';
+import {Router}    from '@angular/router';
 
 import {GenericService} from './generic.service';
 
 @Component({
     moduleId: module.id,
     selector: 'my-login',
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
 })
 
 export class LoginComponent {
-    @Input()
     username: string;
-    @Input()
     password: string;
-
-    loginInfo: string;
+    message: string;
     loggedOut: boolean = true;
 
     constructor(private genericService: GenericService,
@@ -25,11 +23,11 @@ export class LoginComponent {
 
     doLogin(): void {
         this.genericService.login(this.username, this.password).then(user => {
-            this.loginInfo = 'welcome';
+            this.message = 'welcome';
             this.loggedOut = false;
             this.router.navigate(['/dashboard']);
         }).catch(error => {
-            this.loginInfo = 'login failure: ' + (error.message || error);
+            this.message = 'login failure: ' + (error.message || error);
         });
     }
 
@@ -38,5 +36,8 @@ export class LoginComponent {
         this.loggedOut = true;
     }
 
+    clearMessage(): void {
+        this.message = null;
+    }
 }
 
